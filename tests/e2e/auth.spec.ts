@@ -39,7 +39,6 @@ test.describe('Autenticación', () => {
       await page.getByLabel('Usuario', { exact: true }).fill('admin');
       await page.getByLabel('Contraseña', { exact: true }).fill('wrongpass');
       await page.getByRole('button', { name: 'Ingresar' }).click();
-      // eslint-disable-next-line playwright/no-conditional-in-test
       if (i < 2) await expect(page.getByRole('alert')).toContainText('Usuario o contraseña incorrectos');
     }
     await expect(page.getByRole('alert')).toContainText('Demasiados intentos');

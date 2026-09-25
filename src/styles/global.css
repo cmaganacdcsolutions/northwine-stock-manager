@@ -12,6 +12,17 @@ body,
   height: 100%;
 }
 
+/*
+  Safety net only (not the primary fix — see WinesPage.module.css .tableWrap
+  and AppLayout.module.css .content for the actual root-cause fixes for
+  QA_REPORT.md P1-1). Clips any future stray horizontal overflow at the
+  document level instead of letting it scroll the whole page sideways.
+*/
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
   background-color: var(--nw-bg);

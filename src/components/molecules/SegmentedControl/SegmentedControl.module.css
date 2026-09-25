@@ -1,4 +1,11 @@
 .wrap {
+  /* position: relative keeps this scroll container as the containing block
+     for any absolutely-positioned descendant (defensive — see the analogous
+     fix on WinesPage.module.css .tableWrap for the bug this class of issue
+     caused) and min-width: 0 lets it shrink below its content's intrinsic
+     width when it is itself a flex/grid child. */
+  position: relative;
+  min-width: 0;
   display: flex;
   gap: var(--nw-space-1);
   background-color: var(--nw-surface-2);

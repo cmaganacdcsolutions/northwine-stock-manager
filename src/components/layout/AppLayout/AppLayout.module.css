@@ -13,6 +13,7 @@
 
 .content {
   flex: 1;
+  min-width: 0;
   padding: var(--nw-space-6);
   max-width: 1400px;
   width: 100%;

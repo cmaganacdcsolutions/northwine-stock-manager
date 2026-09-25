@@ -1,4 +1,18 @@
 .tableWrap {
+  /*
+    position: relative establishes this element as the containing block for
+    absolutely-positioned descendants (the visually-hidden <caption> and the
+    visually-hidden "Acciones" <span> in the last <th>). Without it, those
+    descendants position themselves relative to the viewport/initial
+    containing block using a "static position" computed from the table's
+    full unclipped width — which escapes this wrapper's overflow-x clip
+    entirely and blows out document.documentElement.scrollWidth even though
+    the table itself scrolls correctly inside the box. This was the real
+    root cause of the horizontal page overflow at 390px on /vinos
+    (STOCK_MANAGER_SPEC / QA_REPORT.md P1-1).
+  */
+  position: relative;
+  min-width: 0;
   margin-top: var(--nw-space-5);
   background-color: var(--nw-surface);
   border: 1px solid var(--nw-border);

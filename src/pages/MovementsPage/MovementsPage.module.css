@@ -1,4 +1,10 @@
 .tableWrap {
+  /* position: relative + min-width: 0 — see WinesPage.module.css .tableWrap
+     for why this matters (contains absolutely-positioned descendants like
+     the visually-hidden table caption so they don't escape this wrapper's
+     overflow-x clip). Applied here defensively for the same table shape. */
+  position: relative;
+  min-width: 0;
   overflow-x: auto;
   background-color: var(--nw-surface);
   border: 1px solid var(--nw-border);

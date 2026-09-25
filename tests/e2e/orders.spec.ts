@@ -35,13 +35,34 @@ test.describe('Órdenes a proveedor', () => {
     await expect(page.getByText('Retrasada').first()).toBeVisible();
   });
 
-  test('marcar orden como recibida actualiza su estado (y stock de barriles si aplica)', async ({ page }) => {
+  test('marcar orden como recibida pide confirmación antes de actualizar el estado', async ({ page }) => {
     const receiveButton = page.getByRole('button', { name: 'Marcar como recibida' }).first();
     await expect(receiveButton).toBeVisible();
     await receiveButton.click();
 
-    // No confirmation modal exists today (see QA_REPORT.md P2) — action is immediate.
+    // Confirmation modal (STOCK_MANAGER_SPEC.md §6 / QA_REPORT.md P2-1) — the
+    // status update must not happen until the user confirms.
+    const dialog = page.getByRole('dialog', { name: 'Confirmar recepción' });
+    await expect(dialog).toBeVisible();
+    await expect(page.getByText(/Recibida el/).first()).toHaveCount(0);
+
+    await dialog.getByRole('button', { name: 'Sí, marcar como recibida' }).click();
+
+    await expect(dialog).toHaveCount(0);
     await expect(page.getByText(/Recibida el/).first()).toBeVisible();
+  });
+
+  test('cancelar la confirmación de "Marcar como recibida" no cambia el estado de la orden', async ({ page }) => {
+    const receiveButton = page.getByRole('button', { name: 'Marcar como recibida' }).first();
+    await receiveButton.click();
+
+    const dialog = page.getByRole('dialog', { name: 'Confirmar recepción' });
+    await expect(dialog).toBeVisible();
+    await dialog.getByRole('button', { name: 'Cancelar' }).click();
+
+    await expect(dialog).toHaveCount(0);
+    await expect(page.getByText(/Recibida el/)).toHaveCount(0);
+    await expect(page.getByRole('button', { name: 'Marcar como recibida' }).first()).toBeVisible();
   });
 
   test('filtro por estado de orden no rompe la página', async ({ page }) => {

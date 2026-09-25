@@ -15,10 +15,10 @@ test.describe('Responsive @ 390x844', () => {
 
   test('sidebar arranca colapsado y se abre/cierra con el botón de menú', async ({ page }) => {
     await loginAndSelectBranch(page);
-    // The sidebar landmark is an <aside aria-label="Navegación principal">, which
-    // exposes as role="complementary" (not "navigation") — see QA_REPORT.md P2
-    // re: landmark semantics.
-    const nav = page.getByRole('complementary', { name: 'Navegación principal' });
+    // The sidebar's menu is a <nav aria-label="Principal">, exposing as the
+    // "navigation" landmark (fixed from <aside role="complementary"> per
+    // QA_REPORT.md P2-2).
+    const nav = page.getByRole('navigation', { name: 'Principal' });
     await expect(nav).not.toBeInViewport();
 
     await page.getByRole('button', { name: 'Abrir menú de navegación' }).click();

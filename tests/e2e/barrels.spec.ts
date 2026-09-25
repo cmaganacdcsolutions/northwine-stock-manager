@@ -11,7 +11,7 @@ test.describe('Barriles', () => {
   test('filtros por tipo y estado no rompen la página', async ({ page }) => {
     const { consoleErrors, failedRequests } = trackPageHealth(page);
     await page.getByLabel('Filtrar por tipo de vino').selectOption({ label: 'Tinto' });
-    await page.getByLabel('Filtrar por estado').selectOption({ label: 'Añejando' });
+    await page.getByLabel('Filtrar por estado').selectOption({ label: 'En crianza' });
     // Either filtered cards or the empty state — both are valid, page must not crash.
     await expect(page.locator('body')).not.toContainText('Error');
     expect(consoleErrors, consoleErrors.join('\n')).toEqual([]);

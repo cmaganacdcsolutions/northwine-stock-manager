@@ -24,7 +24,11 @@ export const seedOrders: SupplierOrder[] = [
     supplierId: 'sup-corchos-andinos',
     status: 'en_transito',
     createdDate: isoOffset(-8),
-    etaDate: isoOffset(1),
+    // Overdue ETA on purpose (QA_REPORT.md P1-2): with the seed's original
+    // etaDate: isoOffset(1), no order ever demoed the "Retrasada" badge
+    // (see OrderCard.tsx isDelayed = canReceive && days < 0). Bodega
+    // Principal is the demo's default branch, so this is visible right away.
+    etaDate: isoOffset(-2),
     items: [
       { id: 'item-002-1', description: 'Corcho natural 45mm', quantity: 20000, unit: 'unidad', unitCost: 0.35 },
     ],

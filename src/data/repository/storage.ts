@@ -13,7 +13,7 @@ export const STORAGE_KEYS = {
 } as const;
 
 /** Bump when seed shape changes so returning demo users get fresh data. */
-export const SEED_VERSION = '1';
+export const SEED_VERSION = '2';
 
 function readCollection<T>(key: string): T[] {
   try {

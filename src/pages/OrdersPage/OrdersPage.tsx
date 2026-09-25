@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Truck } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, Truck } from 'lucide-react';
 import { useBranch } from '../../context/BranchContext';
 import { barrelRepository, orderRepository, supplierRepository } from '../../data/repository';
 import type { OrderStatus, SupplierOrder } from '../../data/types';
@@ -7,6 +7,8 @@ import { generateId } from '../../lib/id';
 import { daysUntil } from '../../lib/format';
 import { PageHeader } from '../../components/molecules/PageHeader/PageHeader';
 import { EmptyState } from '../../components/molecules/StateView/StateView';
+import { Modal } from '../../components/molecules/Modal/Modal';
+import { Button } from '../../components/atoms/Button/Button';
 import { OrderCard } from '../../components/organisms/OrderCard/OrderCard';
 import inputStyles from '../../components/atoms/inputs.module.css';
 import { ORDER_STATUS_LABEL } from './orderLabels';
@@ -18,6 +20,7 @@ export function OrdersPage() {
   const { activeBranch } = useBranch();
   const [version, setVersion] = useState(0);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('todos');
+  const [confirmingOrder, setConfirmingOrder] = useState<SupplierOrder | null>(null);
 
   const suppliers = useMemo(() => supplierRepository.list(), []);
   const supplierById = useMemo(() => new Map(suppliers.map((s) => [s.id, s])), [suppliers]);
@@ -72,6 +75,14 @@ export function OrdersPage() {
     setVersion((v) => v + 1);
   }
 
+  function handleConfirmReceived() {
+    if (!confirmingOrder) return;
+    handleMarkReceived(confirmingOrder);
+    setConfirmingOrder(null);
+  }
+
+  const confirmingSupplier = confirmingOrder ? supplierById.get(confirmingOrder.supplierId) : undefined;
+
   return (
     <div>
       <PageHeader
@@ -91,7 +102,7 @@ export function OrdersPage() {
                 key={order.id}
                 order={order}
                 supplier={supplierById.get(order.supplierId)}
-                onMarkReceived={() => handleMarkReceived(order)}
+                onMarkReceived={() => setConfirmingOrder(order)}
               />
             ))}
           </div>
@@ -123,11 +134,31 @@ export function OrdersPage() {
               key={order.id}
               order={order}
               supplier={supplierById.get(order.supplierId)}
-              onMarkReceived={() => handleMarkReceived(order)}
+              onMarkReceived={() => setConfirmingOrder(order)}
             />
           ))}
         </div>
       )}
+
+      {confirmingOrder ? (
+        <Modal title="Confirmar recepción" onClose={() => setConfirmingOrder(null)}>
+          <p className={styles.confirmText}>
+            <AlertTriangle size={16} aria-hidden="true" />
+            Vas a marcar la orden de {confirmingSupplier?.name ?? 'este proveedor'} como recibida. Esto actualiza el
+            stock
+            {confirmingSupplier?.category === 'barricas' ? ' y crea los barriles nuevos correspondientes' : ''} y no
+            se puede deshacer desde acá.
+          </p>
+          <div className={styles.confirmActions}>
+            <Button variant="ghost" onClick={() => setConfirmingOrder(null)}>
+              Cancelar
+            </Button>
+            <Button variant="primary" icon={<CheckCircle2 size={14} />} onClick={handleConfirmReceived}>
+              Sí, marcar como recibida
+            </Button>
+          </div>
+        </Modal>
+      ) : null}
     </div>
   );
 }

@@ -12,7 +12,9 @@ export const OAK_TYPE_LABEL: Record<OakType, string> = {
 };
 
 export const BARREL_STATUS_LABEL: Record<BarrelStatus, string> = {
-  añejando: 'Añejando',
+  // Display copy aligned with STOCK_MANAGER_SPEC.md §4 ("En crianza"); the
+  // BarrelStatus enum value itself stays `añejando` (data shape unchanged).
+  añejando: 'En crianza',
   listo: 'Listo',
   vacío: 'Vacío',
 };

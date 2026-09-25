@@ -28,7 +28,14 @@ export function Sidebar({ open, onClose }: SidebarProps) {
   return (
     <>
       {open ? <div className={styles.backdrop} onClick={onClose} aria-hidden="true" /> : null}
-      <aside className={`${styles.sidebar} ${open ? styles.open : ''}`} aria-label="Navegación principal">
+      {/*
+        Plain <div> (not <aside>) wrapping a <nav aria-label="Principal">: an
+        <aside> exposes as landmark role "complementary", not "navigation",
+        so screen reader users jumping by landmark type never land on the
+        main menu here (QA_REPORT.md P2-2). The <nav> below is the real,
+        named navigation landmark.
+      */}
+      <div className={`${styles.sidebar} ${open ? styles.open : ''}`}>
         <div className={styles.brandRow}>
           <span className={styles.brand}>North Wine</span>
           <button
@@ -40,7 +47,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             <X size={20} />
           </button>
         </div>
-        <nav className={styles.nav}>
+        <nav className={styles.nav} aria-label="Principal">
           {NAV_ITEMS.map(({ to, label, icon: Icon }) => (
             <NavLink
               key={to}
@@ -53,7 +60,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             </NavLink>
           ))}
         </nav>
-      </aside>
+      </div>
     </>
   );
 }
