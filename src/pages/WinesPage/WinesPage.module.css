@@ -1,0 +1,82 @@
+.tableWrap {
+  margin-top: var(--nw-space-5);
+  background-color: var(--nw-surface);
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius-lg);
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--nw-fs-sm);
+}
+
+.table th {
+  text-align: left;
+  padding: var(--nw-space-3) var(--nw-space-4);
+  font-size: var(--nw-fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--nw-text-muted);
+  border-bottom: 1px solid var(--nw-border);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: var(--nw-space-3) var(--nw-space-4);
+  border-bottom: 1px solid var(--nw-border);
+  color: var(--nw-text);
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/*
+  "Agotado" rows use a background wash instead of lowering text opacity, so
+  contrast stays >= 4.5:1 (STOCK_MANAGER_SPEC.md §5 explicitly forbids the
+  opacity shortcut for this reason).
+*/
+.rowOut {
+  background-color: var(--nw-surface-2);
+}
+
+.wineName {
+  display: block;
+  font-weight: 600;
+  color: var(--nw-text);
+}
+
+.wineType {
+  display: block;
+  font-size: var(--nw-fs-xs);
+  color: var(--nw-text-muted);
+}
+
+.sku {
+  font-family: var(--nw-font-mono);
+  font-size: var(--nw-fs-xs);
+  color: var(--nw-text-muted);
+}
+
+.adjustButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nw-space-2);
+  background: none;
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius-sm);
+  padding: var(--nw-space-2) var(--nw-space-3);
+  color: var(--nw-text-muted);
+  cursor: pointer;
+  font-size: var(--nw-fs-xs);
+  white-space: nowrap;
+  min-height: 36px;
+}
+
+.adjustButton:hover {
+  color: var(--nw-accent);
+  border-color: var(--nw-accent);
+}

@@ -1,0 +1,32 @@
+.transitSection {
+  margin-bottom: var(--nw-space-7);
+  padding: var(--nw-space-4);
+  border: 1px dashed var(--nw-warning);
+  border-radius: var(--nw-radius-lg);
+  background-color: color-mix(in srgb, var(--nw-warning) 6%, transparent);
+}
+
+.transitTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--nw-space-2);
+  font-size: var(--nw-fs-sm);
+  color: var(--nw-warning);
+  margin: 0 0 var(--nw-space-4);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.filters {
+  margin-bottom: var(--nw-space-5);
+}
+
+.filters select {
+  min-width: 220px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--nw-space-4);
+}

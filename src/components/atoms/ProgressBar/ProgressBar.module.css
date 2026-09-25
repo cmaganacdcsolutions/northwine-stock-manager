@@ -1,0 +1,42 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--nw-space-3);
+}
+
+.track {
+  flex: 1;
+  height: 8px;
+  border-radius: var(--nw-radius-sm);
+  background-color: var(--nw-surface-2);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: var(--nw-radius-sm);
+  transition: width var(--nw-dur-slow) var(--nw-ease-ui);
+}
+
+.accent {
+  background-color: var(--nw-accent);
+}
+
+.success {
+  background-color: var(--nw-success);
+}
+
+.warning {
+  background-color: var(--nw-warning);
+}
+
+.danger {
+  background-color: var(--nw-danger);
+}
+
+.percentLabel {
+  font-size: var(--nw-fs-xs);
+  color: var(--nw-text-muted);
+  min-width: 2.5rem;
+  text-align: right;
+}

@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--nw-space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--nw-space-6);
+}
+
+.title {
+  font-family: var(--nw-font-display);
+  font-size: var(--nw-fs-xl);
+  color: var(--nw-text);
+}
+
+.subtitle {
+  margin: var(--nw-space-1) 0 0;
+  color: var(--nw-text-muted);
+  font-size: var(--nw-fs-sm);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--nw-space-3);
+  flex-wrap: wrap;
+}

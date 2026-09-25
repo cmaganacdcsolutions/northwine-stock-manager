@@ -1,0 +1,90 @@
+.card {
+  background-color: var(--nw-surface);
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius-lg);
+  padding: var(--nw-space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--nw-space-3);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--nw-space-3);
+}
+
+.code {
+  margin: 0;
+  font-family: var(--nw-font-mono);
+  font-weight: 600;
+  font-size: var(--nw-fs-md);
+  color: var(--nw-text);
+}
+
+.varietal {
+  margin: 2px 0 0;
+  font-size: var(--nw-fs-xs);
+  color: var(--nw-text-muted);
+}
+
+.editButton {
+  background: none;
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius-sm);
+  color: var(--nw-text-muted);
+  cursor: pointer;
+  padding: var(--nw-space-2);
+  flex-shrink: 0;
+}
+
+.editButton:hover {
+  color: var(--nw-accent);
+  border-color: var(--nw-accent);
+}
+
+.badgeRow {
+  display: flex;
+  gap: var(--nw-space-2);
+  flex-wrap: wrap;
+}
+
+.liters {
+  margin: 0;
+  font-size: var(--nw-fs-xs);
+  color: var(--nw-text-muted);
+}
+
+.metaList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--nw-space-2);
+  margin: 0;
+}
+
+.metaRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metaRow dt {
+  font-size: var(--nw-fs-xs);
+  color: var(--nw-text-muted);
+}
+
+.metaRow dd {
+  margin: 0;
+  font-size: var(--nw-fs-sm);
+  color: var(--nw-text);
+}
+
+.notes {
+  margin: 0;
+  font-size: var(--nw-fs-xs);
+  color: var(--nw-text-muted);
+  font-style: italic;
+  border-top: 1px solid var(--nw-border);
+  padding-top: var(--nw-space-2);
+}

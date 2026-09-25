@@ -1,0 +1,118 @@
+.page {
+  min-height: 100vh;
+  background-color: var(--nw-bg);
+  padding: var(--nw-space-8) var(--nw-space-6);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--nw-space-8);
+  gap: var(--nw-space-4);
+  flex-wrap: wrap;
+}
+
+.kicker {
+  font-size: var(--nw-fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nw-text-muted);
+}
+
+.title {
+  font-family: var(--nw-font-display);
+  font-size: var(--nw-fs-2xl);
+  color: var(--nw-text);
+  margin-top: var(--nw-space-1);
+}
+
+.logout {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nw-space-2);
+  background: none;
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius-sm);
+  padding: var(--nw-space-2) var(--nw-space-4);
+  color: var(--nw-text-muted);
+  cursor: pointer;
+  font-size: var(--nw-fs-sm);
+}
+
+.logout:hover {
+  color: var(--nw-danger);
+  border-color: var(--nw-danger);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--nw-space-4);
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: var(--nw-space-4);
+  background-color: var(--nw-surface);
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius-lg);
+  padding: var(--nw-space-5);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--nw-dur-fast) var(--nw-ease-ui), transform var(--nw-dur-fast) var(--nw-ease-ui);
+}
+
+.card:hover {
+  border-color: var(--nw-accent);
+  transform: translateY(-2px);
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--nw-radius-md);
+  background-color: var(--nw-surface-2);
+  color: var(--nw-accent);
+  flex-shrink: 0;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.cardKind {
+  font-size: var(--nw-fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--nw-text-muted);
+}
+
+.cardName {
+  font-size: var(--nw-fs-md);
+  font-weight: 600;
+  color: var(--nw-text);
+}
+
+.cardAddress {
+  font-size: var(--nw-fs-xs);
+  color: var(--nw-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  color: var(--nw-text-muted);
+  flex-shrink: 0;
+}

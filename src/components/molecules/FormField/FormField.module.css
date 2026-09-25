@@ -1,0 +1,21 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nw-space-1);
+}
+
+.label {
+  font-size: var(--nw-fs-sm);
+  font-weight: 600;
+  color: var(--nw-text);
+}
+
+.hint {
+  font-size: var(--nw-fs-xs);
+  color: var(--nw-text-muted);
+}
+
+.error {
+  font-size: var(--nw-fs-xs);
+  color: var(--nw-danger);
+}

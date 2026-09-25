@@ -1,0 +1,15 @@
+.mark {
+  width: 56px;
+  height: auto;
+  color: var(--nw-wine);
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+.mark path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

@@ -1,0 +1,42 @@
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: var(--nw-space-3);
+  border-radius: var(--nw-radius-sm);
+  border: 1px solid var(--nw-border);
+  background-color: var(--nw-bg-elevated);
+  color: var(--nw-text);
+  font-size: var(--nw-fs-sm);
+  transition: border-color var(--nw-dur-fast) var(--nw-ease-ui);
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: var(--nw-accent);
+}
+
+.invalid {
+  border-color: var(--nw-danger);
+}
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--nw-space-2);
+  padding: var(--nw-space-3);
+  border-radius: var(--nw-radius-sm);
+  border: 1px solid var(--nw-border);
+  background-color: var(--nw-bg-elevated);
+  transition: border-color var(--nw-dur-fast) var(--nw-ease-ui);
+}
+
+.inputGroup:focus-within {
+  border-color: var(--nw-accent);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 4.5rem;
+}

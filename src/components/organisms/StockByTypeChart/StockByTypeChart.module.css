@@ -1,0 +1,16 @@
+.panel {
+  background-color: var(--nw-surface);
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius-lg);
+  padding: var(--nw-space-5);
+}
+
+.title {
+  font-size: var(--nw-fs-md);
+  color: var(--nw-text);
+  margin: 0 0 var(--nw-space-4);
+}
+
+.chartWrap {
+  width: 100%;
+}

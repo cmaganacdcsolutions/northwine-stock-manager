@@ -1,0 +1,131 @@
+/*
+  North Wine Company — Design Tokens
+  Fuente de verdad visual para landing-page/ y stock-manager/.
+  Ver brand/BRAND.md para racional de marca y ratios de contraste AA.
+
+  Google Fonts recomendado (colocar en <head>):
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  Tema por defecto (:root) = OSCURO, usado por landing-page (cinematográfico).
+  Tema [data-theme="light"] = CLARO, usado por stock-manager (operativo).
+  Ambos exponen exactamente los mismos nombres de variable --nw-*.
+  Para activar el tema claro en stock-manager: <html data-theme="light"> (o en el nodo raíz de la app).
+*/
+
+:root {
+  /* ---- Color: superficies (oscuro / landing) ---- */
+  --nw-bg: #170608;
+  --nw-bg-elevated: #240A10;
+  --nw-surface: #2B0E14;
+  --nw-surface-2: #3A131B;
+
+  /* ---- Color: texto ---- */
+  --nw-text: #F6EEE4;
+  --nw-text-muted: #C9B4AE;
+  --nw-text-inverse: #1A0508;
+
+  /* ---- Color: acento y marca ---- */
+  --nw-accent: #C6A15B;
+  --nw-accent-hover: #AD883F;
+  --nw-accent-contrast: #1A0508;
+  --nw-wine: #7A1128;
+  --nw-border: rgba(246, 238, 228, 0.14);
+
+  /* ---- Color: semántico ---- */
+  --nw-success: #6FA287;
+  --nw-warning: #D9A441;
+  --nw-danger: #D9645A;
+  --nw-info: #6E93B0;
+
+  /* ---- Tipografía ---- */
+  --nw-font-display: 'Playfair Display', 'Iowan Old Style', Georgia, serif;
+  --nw-font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --nw-font-mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --nw-fs-xs: 0.75rem;    /* 12px */
+  --nw-fs-sm: 0.875rem;   /* 14px */
+  --nw-fs-md: 1rem;       /* 16px */
+  --nw-fs-lg: 1.25rem;    /* 20px */
+  --nw-fs-xl: 1.5rem;     /* 24px */
+  --nw-fs-2xl: 2rem;      /* 32px */
+  --nw-fs-3xl: 2.75rem;   /* 44px */
+  --nw-fs-hero: clamp(2.75rem, 1rem + 6vw, 6.5rem); /* 44px -> 104px */
+
+  /* ---- Espaciado (grid base 8px, paso fino 4px) ---- */
+  --nw-space-1: 4px;
+  --nw-space-2: 8px;
+  --nw-space-3: 12px;
+  --nw-space-4: 16px;
+  --nw-space-5: 24px;
+  --nw-space-6: 32px;
+  --nw-space-7: 40px;
+  --nw-space-8: 48px;
+  --nw-space-9: 64px;
+  --nw-space-10: 96px;
+
+  /* ---- Radios ---- */
+  --nw-radius-sm: 4px;
+  --nw-radius-md: 10px;
+  --nw-radius-lg: 20px;
+
+  /* ---- Elevación (sombras tintadas de vino, no negro puro) ---- */
+  --nw-shadow-sm: 0 1px 2px rgba(10, 2, 4, 0.35);
+  --nw-shadow-md: 0 8px 24px rgba(10, 2, 4, 0.45);
+  --nw-shadow-lg: 0 24px 64px rgba(10, 2, 4, 0.55);
+
+  /* ---- Motion ---- */
+  --nw-ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --nw-ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
+  --nw-dur-fast: 150ms;
+  --nw-dur-base: 300ms;
+  --nw-dur-slow: 600ms;
+  --nw-dur-cinematic: 1200ms;
+
+  /* ---- Layout ---- */
+  --nw-container-max: 1280px;
+  --nw-container-max-dense: 1440px;
+  --nw-bp-sm: 480px;
+  --nw-bp-md: 768px;
+  --nw-bp-lg: 1024px;
+  --nw-bp-xl: 1280px;
+  --nw-bp-2xl: 1536px;
+
+  /* ---- Scrim recomendado sobre fotografía con texto ---- */
+  --nw-photo-scrim: linear-gradient(180deg, rgba(23, 6, 8, 0) 40%, rgba(23, 6, 8, 0.85) 100%);
+}
+
+/*
+  Tema claro — usar en stock-manager (operativo).
+  Justificación en STOCK_MANAGER_SPEC.md: legibilidad de tablas densas, uso en tablet/back
+  office con luz ambiente alta, menor fatiga visual en turnos largos.
+  Misma paleta de marca (vino + oro) reordenada para fondos claros.
+*/
+:root[data-theme='light'] {
+  --nw-bg: #FAF7F3;
+  --nw-bg-elevated: #FFFFFF;
+  --nw-surface: #FFFFFF;
+  --nw-surface-2: #F1E9E2;
+
+  --nw-text: #241014;
+  --nw-text-muted: #6B5A5E;
+  --nw-text-inverse: #FAF7F3;
+
+  --nw-accent: #7A1128;
+  --nw-accent-hover: #5C0D1E;
+  --nw-accent-contrast: #FFFFFF;
+  --nw-wine: #7A1128;
+  --nw-border: #E4D9D2;
+
+  --nw-success: #2F6B4F;
+  --nw-warning: #8A5A12;
+  --nw-danger: #B23A30;
+  --nw-info: #2C5C78;
+
+  --nw-shadow-sm: 0 1px 2px rgba(36, 16, 20, 0.08);
+  --nw-shadow-md: 0 8px 24px rgba(36, 16, 20, 0.10);
+  --nw-shadow-lg: 0 24px 64px rgba(36, 16, 20, 0.14);
+
+  --nw-photo-scrim: linear-gradient(180deg, rgba(250, 247, 243, 0) 40%, rgba(250, 247, 243, 0.9) 100%);
+}

@@ -1,0 +1,62 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgb(0 0 0 / 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nw-space-4);
+  z-index: 40;
+}
+
+.backdropButton {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: default;
+}
+
+.dialog {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--nw-bg-elevated);
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius-lg);
+  box-shadow: var(--nw-shadow-lg);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--nw-space-5) var(--nw-space-5) 0;
+}
+
+.title {
+  font-size: var(--nw-fs-lg);
+  font-family: var(--nw-font-display);
+  color: var(--nw-text);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: var(--nw-text-muted);
+  cursor: pointer;
+  padding: var(--nw-space-1);
+}
+
+.closeButton:hover {
+  color: var(--nw-text);
+}
+
+.body {
+  padding: var(--nw-space-5);
+}

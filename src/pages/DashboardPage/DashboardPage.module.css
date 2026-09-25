@@ -1,0 +1,29 @@
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--nw-space-4);
+  margin-bottom: var(--nw-space-6);
+}
+
+.section {
+  margin-bottom: var(--nw-space-6);
+}
+
+/* Mobile: KPIs become a horizontal snap carousel per STOCK_MANAGER_SPEC.md §3
+   instead of stacking, so the "at a glance" read survives on a 390px phone. */
+@media (max-width: 640px) {
+  .kpiGrid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: var(--nw-space-2);
+    margin-inline: calc(var(--nw-space-4) * -1);
+    padding-inline: var(--nw-space-4);
+  }
+
+  .kpiGrid > * {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+  }
+}

@@ -1,0 +1,134 @@
+.header {
+  height: 64px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--nw-space-4);
+  padding: 0 var(--nw-space-6);
+  background-color: var(--nw-bg-elevated);
+  border-bottom: 1px solid var(--nw-border);
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--nw-text);
+  cursor: pointer;
+  padding: var(--nw-space-1);
+}
+
+.branchSwitcher {
+  position: relative;
+}
+
+.branchButton {
+  display: flex;
+  align-items: center;
+  gap: var(--nw-space-2);
+  background-color: var(--nw-surface);
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius-md);
+  padding: var(--nw-space-2) var(--nw-space-4);
+  color: var(--nw-text);
+  cursor: pointer;
+}
+
+.branchLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.branchKind {
+  font-size: var(--nw-fs-xs);
+  color: var(--nw-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.branchName {
+  font-size: var(--nw-fs-sm);
+  font-weight: 600;
+}
+
+.branchList {
+  position: absolute;
+  top: calc(100% + var(--nw-space-2));
+  left: 0;
+  min-width: 240px;
+  background-color: var(--nw-surface);
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius-md);
+  box-shadow: var(--nw-shadow-md);
+  list-style: none;
+  margin: 0;
+  padding: var(--nw-space-2);
+  z-index: 15;
+}
+
+.branchOption {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  background: none;
+  border: none;
+  border-radius: var(--nw-radius-sm);
+  padding: var(--nw-space-2) var(--nw-space-3);
+  color: var(--nw-text);
+  cursor: pointer;
+  text-align: left;
+}
+
+.branchOption:hover {
+  background-color: var(--nw-surface-2);
+}
+
+.branchOption[aria-selected='true'] {
+  color: var(--nw-accent);
+}
+
+.userArea {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--nw-space-3);
+}
+
+.userName {
+  font-size: var(--nw-fs-sm);
+  color: var(--nw-text-muted);
+}
+
+.logoutButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius-sm);
+  color: var(--nw-text-muted);
+  cursor: pointer;
+  padding: var(--nw-space-2);
+  transition: color var(--nw-dur-fast) var(--nw-ease-ui), border-color var(--nw-dur-fast) var(--nw-ease-ui);
+}
+
+.logoutButton:hover {
+  color: var(--nw-danger);
+  border-color: var(--nw-danger);
+}
+
+@media (max-width: 900px) {
+  .menuButton {
+    display: inline-flex;
+  }
+
+  .branchName {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

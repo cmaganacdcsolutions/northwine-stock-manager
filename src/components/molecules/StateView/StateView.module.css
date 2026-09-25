@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nw-space-3);
+  padding: var(--nw-space-9) var(--nw-space-6);
+  text-align: center;
+  color: var(--nw-text-muted);
+}
+
+.icon {
+  color: var(--nw-text-muted);
+  opacity: 0.8;
+}
+
+.title {
+  font-size: var(--nw-fs-md);
+  font-weight: 600;
+  color: var(--nw-text);
+  margin: 0;
+}
+
+.description {
+  font-size: var(--nw-fs-sm);
+  margin: 0;
+  max-width: 32ch;
+}

@@ -1,0 +1,215 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nw-space-6);
+  background-color: var(--nw-bg);
+  overflow: hidden;
+}
+
+/*
+  Token-only ambient treatment (no stock photography): per ASSET_MAP.md's
+  closing rule, no Assets/ image may be used as UI in the Stock Manager —
+  it is an operative tool, not the cinematic landing. This reproduces the
+  brand's wine/gold mood with gradients + a faint vine-row rule pattern
+  instead of a photo background.
+*/
+.ambient {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      ellipse 60% 50% at 15% 8%,
+      color-mix(in srgb, var(--nw-wine) 16%, transparent) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 88% 95%,
+      color-mix(in srgb, var(--nw-accent) 14%, transparent) 0%,
+      transparent 60%
+    ),
+    repeating-linear-gradient(
+      100deg,
+      color-mix(in srgb, var(--nw-wine) 5%, transparent) 0px,
+      color-mix(in srgb, var(--nw-wine) 5%, transparent) 1px,
+      transparent 1px,
+      transparent 64px
+    );
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--nw-surface);
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius-lg);
+  box-shadow: var(--nw-shadow-lg);
+  padding: var(--nw-space-8) var(--nw-space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--nw-space-6);
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: var(--nw-space-6) var(--nw-space-5);
+  }
+
+  .page {
+    padding: var(--nw-space-4);
+  }
+}
+
+.brandBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nw-space-1);
+  text-align: center;
+}
+
+.brandMark {
+  width: 44px;
+  margin-bottom: var(--nw-space-2);
+}
+
+.brandKicker {
+  font-size: var(--nw-fs-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nw-text-muted);
+}
+
+.brandTitle {
+  font-family: var(--nw-font-display);
+  font-size: var(--nw-fs-2xl);
+  color: var(--nw-text);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nw-space-4);
+}
+
+.fieldIcon {
+  color: var(--nw-text-muted);
+  flex-shrink: 0;
+}
+
+.bareInput {
+  border: none;
+  background: none;
+  outline: none;
+  flex: 1;
+  color: var(--nw-text);
+  font-size: var(--nw-fs-sm);
+  min-width: 0;
+}
+
+.togglePassword {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--nw-text-muted);
+  cursor: pointer;
+  padding: var(--nw-space-1);
+  min-width: 32px;
+  min-height: 32px;
+  flex-shrink: 0;
+  transition: color var(--nw-dur-fast) var(--nw-ease-ui);
+}
+
+.togglePassword:hover {
+  color: var(--nw-accent);
+}
+
+.formRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nw-space-3);
+  flex-wrap: wrap;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: var(--nw-space-2);
+  font-size: var(--nw-fs-sm);
+  color: var(--nw-text-muted);
+  cursor: pointer;
+}
+
+.checkboxRow input {
+  accent-color: var(--nw-accent);
+  width: 16px;
+  height: 16px;
+}
+
+.forgotLink {
+  background: none;
+  border: none;
+  padding: var(--nw-space-1);
+  color: var(--nw-accent);
+  font-size: var(--nw-fs-sm);
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.forgotLink:hover {
+  color: var(--nw-accent-hover);
+}
+
+.hintBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nw-space-2);
+  margin: calc(var(--nw-space-3) * -1) 0 0;
+  padding: var(--nw-space-3);
+  background-color: color-mix(in srgb, var(--nw-info) 12%, transparent);
+  color: var(--nw-info);
+  border-radius: var(--nw-radius-sm);
+  font-size: var(--nw-fs-xs);
+}
+
+.submit {
+  width: 100%;
+  margin-top: var(--nw-space-2);
+  min-height: 44px;
+}
+
+.error,
+.lockout {
+  display: flex;
+  align-items: center;
+  gap: var(--nw-space-2);
+  margin: 0;
+  padding: var(--nw-space-3);
+  border-radius: var(--nw-radius-sm);
+  font-size: var(--nw-fs-sm);
+}
+
+.error {
+  color: var(--nw-danger);
+  background-color: color-mix(in srgb, var(--nw-danger) 10%, transparent);
+}
+
+.lockout {
+  color: var(--nw-warning);
+  background-color: color-mix(in srgb, var(--nw-warning) 12%, transparent);
+}
+
+.hint {
+  margin: 0;
+  text-align: center;
+  font-size: var(--nw-fs-xs);
+  color: var(--nw-text-muted);
+}

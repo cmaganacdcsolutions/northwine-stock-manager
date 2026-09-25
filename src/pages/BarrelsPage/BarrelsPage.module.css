@@ -1,0 +1,16 @@
+.filters {
+  display: flex;
+  gap: var(--nw-space-3);
+  margin-bottom: var(--nw-space-5);
+  flex-wrap: wrap;
+}
+
+.filters select {
+  min-width: 180px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--nw-space-4);
+}

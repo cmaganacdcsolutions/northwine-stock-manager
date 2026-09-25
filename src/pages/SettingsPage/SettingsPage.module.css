@@ -1,0 +1,65 @@
+.card {
+  background-color: var(--nw-surface);
+  border: 1px solid var(--nw-border);
+  border-radius: var(--nw-radius-lg);
+  padding: var(--nw-space-5);
+  margin-bottom: var(--nw-space-5);
+  max-width: 560px;
+}
+
+.cardTitle {
+  font-size: var(--nw-fs-md);
+  color: var(--nw-text);
+  margin: 0 0 var(--nw-space-3);
+}
+
+.cardDescription {
+  font-size: var(--nw-fs-sm);
+  color: var(--nw-text-muted);
+  margin: 0 0 var(--nw-space-4);
+}
+
+.detailList {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nw-space-2);
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--nw-fs-sm);
+}
+
+.detailRow dt {
+  color: var(--nw-text-muted);
+}
+
+.detailRow dd {
+  margin: 0;
+  color: var(--nw-text);
+  font-weight: 600;
+}
+
+.confirmBox {
+  border: 1px solid var(--nw-danger);
+  border-radius: var(--nw-radius-md);
+  padding: var(--nw-space-4);
+  background-color: color-mix(in srgb, var(--nw-danger) 8%, transparent);
+}
+
+.confirmText {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nw-space-2);
+  font-size: var(--nw-fs-sm);
+  color: var(--nw-text);
+  margin: 0 0 var(--nw-space-4);
+}
+
+.confirmActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--nw-space-3);
+}
