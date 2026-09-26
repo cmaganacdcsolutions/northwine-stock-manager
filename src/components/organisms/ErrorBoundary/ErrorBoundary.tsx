@@ -11,7 +11,7 @@ interface ErrorBoundaryState {
 
 /**
  * Last-resort "error" lifecycle state for every branch-scoped view. Catches
- * render-time failures (e.g. corrupted localStorage data) so the app never
+ * render-time failures (e.g. corrupted sessionStorage data) so the app never
  * shows a blank screen.
  */
 export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {

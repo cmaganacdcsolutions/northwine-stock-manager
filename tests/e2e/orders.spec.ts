@@ -17,9 +17,9 @@ test.describe('Órdenes a proveedor', () => {
 
   test('una orden con ETA vencida sin recibir muestra badge "Retrasada"', async ({ page }) => {
     // Seed data has no naturally-overdue order (see QA_REPORT.md) — inject one via
-    // localStorage (read-only-to-src technique) to verify the "Retrasada" state renders.
+    // sessionStorage (read-only-to-src technique) to verify the "Retrasada" state renders.
     await page.evaluate(() => {
-      const raw = window.localStorage.getItem('nw:orders');
+      const raw = window.sessionStorage.getItem('nw:orders');
       const orders = raw ? JSON.parse(raw) : [];
       const target = orders.find(
         (o: { status: string }) => o.status === 'en_transito' || o.status === 'enviada',
@@ -28,7 +28,7 @@ test.describe('Órdenes a proveedor', () => {
         const past = new Date();
         past.setDate(past.getDate() - 5);
         target.etaDate = past.toISOString().slice(0, 10);
-        window.localStorage.setItem('nw:orders', JSON.stringify(orders));
+        window.sessionStorage.setItem('nw:orders', JSON.stringify(orders));
       }
     });
     await page.reload();

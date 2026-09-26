@@ -1,8 +1,8 @@
 # North Wine · Stock Manager (DEMO)
 
 Demo interna frontend-only para la reunión con North Wine. No hay backend: todos
-los datos son mock, realistas pero genéricos, y persisten en `localStorage` del
-navegador.
+los datos son mock, realistas pero genéricos, y persisten en `sessionStorage` del
+navegador (se reinician al cerrar la pestaña).
 
 ## Cómo correr
 
@@ -34,10 +34,11 @@ producción). La sesión vive en `sessionStorage`.
 ## Datos demo
 
 Todo el catálogo (sucursales, barriles, vinos/añejados, proveedores, órdenes y
-movimientos) se genera en `src/data/seed/` y se graba en `localStorage` la
-primera vez que se abre la app. Desde **Ajustes → Restablecer datos demo** se
-puede descartar cualquier cambio hecho durante una presentación y volver al
-set original.
+movimientos) se genera en `src/data/seed/` y se graba en `sessionStorage` la
+primera vez que se abre la app en cada pestaña/sesión (cerrar la pestaña borra
+todo y la próxima apertura vuelve a sembrar desde cero). Desde
+**Ajustes → Restablecer datos demo** se puede descartar cualquier cambio hecho
+durante una presentación y volver al set original sin cerrar la pestaña.
 
 ## Diseño / tokens
 
@@ -51,7 +52,7 @@ tipografías hardcodeados fuera de ese archivo.
 
 - `src/auth/` — credenciales demo, contexto de sesión, guard de rutas.
 - `src/context/` — sucursal activa (branch) y su guard de rutas.
-- `src/data/` — tipos de dominio, seed y repositorios sobre `localStorage`
+- `src/data/` — tipos de dominio, seed y repositorios sobre `sessionStorage`
   (intercambiables por una API real sin tocar las páginas).
 - `src/components/` — atoms → molecules → organisms → layout, siguiendo Atomic
   Design.
@@ -64,3 +65,25 @@ tipografías hardcodeados fuera de ese archivo.
   microtransiciones de UI (hover, focus, progreso de llenado).
 - Todos los datos filtran por la sucursal activa (se elige tras el login y se
   puede cambiar desde el header).
+
+## Deploy (Vercel)
+
+Sitio 100% estático (sin funciones serverless). Configuración en `vercel.json`
+(framework Vite, `outputDirectory: dist`, rewrite SPA, headers de seguridad y
+cache immutable para `/assets/*`).
+
+```bash
+npm install -g vercel   # o usar npx vercel
+vercel login            # una sola vez por máquina
+
+# Preview (URL *.vercel.app efímera, no toca producción):
+vercel
+
+# Producción (URL *.vercel.app estable del proyecto):
+vercel --prod
+```
+
+Primer deploy: `vercel` te pregunta por el proyecto/scope y crea el link en
+`.vercel/` (no versionar). Rollback: `vercel rollback <deployment-url>` o
+re-promover un deployment anterior desde el dashboard — cada build es un
+artefacto inmutable, nunca se reconstruye por ambiente.

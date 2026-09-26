@@ -1,6 +1,6 @@
 import type { Entity } from '../types';
 
-/** Namespaced localStorage keys so a future API swap can't collide. */
+/** Namespaced sessionStorage keys so a future API swap can't collide. */
 export const STORAGE_KEYS = {
   branches: 'nw:branches',
   barrels: 'nw:barrels',
@@ -17,7 +17,7 @@ export const SEED_VERSION = '2';
 
 function readCollection<T>(key: string): T[] {
   try {
-    const raw = window.localStorage.getItem(key);
+    const raw = window.sessionStorage.getItem(key);
     if (!raw) return [];
     return JSON.parse(raw) as T[];
   } catch {
@@ -26,7 +26,7 @@ function readCollection<T>(key: string): T[] {
 }
 
 function writeCollection<T>(key: string, items: T[]): void {
-  window.localStorage.setItem(key, JSON.stringify(items));
+  window.sessionStorage.setItem(key, JSON.stringify(items));
 }
 
 export interface Repository<T extends Entity> {
@@ -37,7 +37,7 @@ export interface Repository<T extends Entity> {
 }
 
 /**
- * Generic CRUD repository backed by localStorage. Swappable later for a
+ * Generic CRUD repository backed by sessionStorage. Swappable later for a
  * real API client since callers only depend on the `Repository<T>` shape.
  */
 export function createLocalStorageRepository<T extends Entity>(key: string): Repository<T> {
@@ -72,13 +72,13 @@ export function seedCollection<T>(key: string, items: T[]): void {
 }
 
 export function isSeeded(): boolean {
-  return window.localStorage.getItem(STORAGE_KEYS.seedVersion) === SEED_VERSION;
+  return window.sessionStorage.getItem(STORAGE_KEYS.seedVersion) === SEED_VERSION;
 }
 
 export function markSeeded(): void {
-  window.localStorage.setItem(STORAGE_KEYS.seedVersion, SEED_VERSION);
+  window.sessionStorage.setItem(STORAGE_KEYS.seedVersion, SEED_VERSION);
 }
 
 export function clearAllData(): void {
-  Object.values(STORAGE_KEYS).forEach((key) => window.localStorage.removeItem(key));
+  Object.values(STORAGE_KEYS).forEach((key) => window.sessionStorage.removeItem(key));
 }

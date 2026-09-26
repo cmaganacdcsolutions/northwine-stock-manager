@@ -38,7 +38,7 @@ export function SettingsPage() {
       <section className={styles.card}>
         <h2 className={styles.cardTitle}>Datos demo</h2>
         <p className={styles.cardDescription}>
-          Esta demo persiste todo en localStorage. Usá esta acción para descartar cualquier cambio hecho durante la
+          Esta demo persiste todo en sessionStorage (se reinicia al cerrar la pestaña). Usá esta acción para descartar cualquier cambio hecho durante la
           presentación y volver al set de datos original.
         </p>
 

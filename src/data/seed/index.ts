@@ -17,7 +17,7 @@ function writeSeed(): void {
   markSeeded();
 }
 
-/** Seeds localStorage on first run, or when the seed version changes. */
+/** Seeds sessionStorage on first run of each session, or when the seed version changes. */
 export function ensureSeeded(): void {
   if (isSeeded()) return;
   writeSeed();
